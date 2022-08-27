@@ -69,7 +69,7 @@ class RadioStationBox extends StatelessWidget {
             ]),
             IconButton(
                 onPressed: () {
-                  radioStationsDataList.changeFavoriteStatus(id);
+                  radioStationsDataList.changeFavoriteStatus(title);
                   radioStationsDataList.savesDataLocally();
                 },
                 icon: isFavorite

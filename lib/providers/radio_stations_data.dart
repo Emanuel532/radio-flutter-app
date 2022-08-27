@@ -66,9 +66,13 @@ class RStations with ChangeNotifier {
     return _radio_stations_list.where((element) => element.isFavorite).toList();
   }
 
-  void changeFavoriteStatus(int index) {
-    _radio_stations_list[index].isFavorite =
-        !_radio_stations_list[index].isFavorite;
+  void changeFavoriteStatus(String titluPostSelectat) {
+    _radio_stations_list
+            .firstWhere((element) => element.title == titluPostSelectat)
+            .isFavorite =
+        !_radio_stations_list
+            .firstWhere((element) => element.title == titluPostSelectat)
+            .isFavorite;
     notifyListeners();
   }
 
