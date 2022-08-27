@@ -10,6 +10,13 @@ import 'dart:io';
 class RStations with ChangeNotifier {
   bool favorite = false;
 
+  int ecranDeschis = 0;
+
+  void changeEcranDeschis(int newValue) {
+    ecranDeschis = newValue;
+    notifyListeners();
+  }
+
   void toggleFavorites() {
     favorite = !favorite;
     notifyListeners();

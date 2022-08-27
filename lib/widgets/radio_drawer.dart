@@ -9,6 +9,7 @@ class RadioDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    int ecranActiv = Provider.of<RStations>(context).ecranDeschis;
     bool statusFavorit = Provider.of<RStations>(context).favorit;
     return SafeArea(
       child: Drawer(
@@ -18,34 +19,53 @@ class RadioDrawer extends StatelessWidget {
               title: Text('Radio Romania'),
               automaticallyImplyLeading: false,
             ),
-            InkWell(
-              onTap: () {
-                Navigator.of(context)
-                    .pushReplacementNamed(RadioStationsScreen.routeName);
-              },
-              child: ListTile(
-                leading: const Icon(Icons.radio),
-                title: Text(
-                  'Posturi',
-                  style: Theme.of(context).textTheme.titleMedium,
+            Ink(
+              color: ecranActiv == 0
+                  ? Theme.of(context).colorScheme.primary
+                  : Colors.white,
+              child: InkWell(
+                onTap: () {
+                  Navigator.of(context)
+                      .pushReplacementNamed(RadioStationsScreen.routeName);
+                  Provider.of<RStations>(context, listen: false)
+                      .changeEcranDeschis(0);
+                },
+                child: ListTile(
+                  leading: Icon(
+                    Icons.radio,
+                    color: (ecranActiv == 0) ? Colors.white : Colors.black,
+                  ),
+                  title: Text(
+                    'Posturi',
+                    style: (ecranActiv == 0)
+                        ? TextStyle(color: Colors.white)
+                        : Theme.of(context).textTheme.titleMedium,
+                  ),
                 ),
               ),
             ),
-            Divider(
-              thickness: 1,
-            ),
-            InkWell(
-              onTap: () {
-                // Provider.of<RStations>(context, listen: false)
-                //     .toggleFavorites();
-                Navigator.of(context).pushReplacementNamed(
-                    RadioStationsFavoritesScreen.routeName);
-              },
-              child: ListTile(
-                leading: const Icon(Icons.favorite_border),
-                title: Text(
-                  'Favorite',
-                  style: Theme.of(context).textTheme.titleMedium,
+            Ink(
+              color: ecranActiv == 1
+                  ? Theme.of(context).colorScheme.primary
+                  : Colors.white,
+              child: InkWell(
+                onTap: () {
+                  Navigator.of(context).pushReplacementNamed(
+                      RadioStationsFavoritesScreen.routeName);
+                  Provider.of<RStations>(context, listen: false)
+                      .changeEcranDeschis(1);
+                },
+                child: ListTile(
+                  leading: Icon(
+                    (ecranActiv == 1) ? Icons.favorite : Icons.favorite_border,
+                    color: (ecranActiv == 1) ? Colors.white : Colors.black,
+                  ),
+                  title: Text(
+                    'Favorite',
+                    style: (ecranActiv == 1)
+                        ? TextStyle(color: Colors.white)
+                        : Theme.of(context).textTheme.titleMedium,
+                  ),
                 ),
               ),
             ),
