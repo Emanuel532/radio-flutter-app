@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:radio_app/models/radio_station.dart';
+import 'package:radio_app/widgets/no_network_conection_widget.dart';
 import '../providers/radio_player.dart';
 import '../widgets/radio_station_box.dart';
 import '../widgets/radio_drawer.dart';
@@ -33,33 +34,35 @@ class _RadioStationsScreenState extends State<RadioStationsScreen> {
     return Scaffold(
       drawer: RadioDrawer(),
       appBar: AppBar(title: Text('Posturi')),
-      body: Column(
-        children: [
-          Container(
-            height: (screenSize.height -
-                    AppBar().preferredSize.height -
-                    MediaQuery.of(context).viewPadding.top) *
-                0.87,
-            child: ListView.builder(
-                itemCount: listaRadio.length,
-                itemBuilder: ((context, index) {
-                  return RadioStationBox(
-                    title: listaRadio[index].title,
-                    imageUrl: listaRadio[index].imageUrl,
-                    url: listaRadio[index].url,
-                    id: index,
-                    isPlaying: (listaRadio[index].title ==
-                        radioPlayer.nowPlayingRadioTitle),
-                    isFavorite: listaRadio[index].isFavorite,
-                  );
-                })),
-          ),
-          InfoBar((screenSize.height -
-                  AppBar().preferredSize.height -
-                  MediaQuery.of(context).viewPadding.top) *
-              0.13),
-        ],
-      ),
+      body: Provider.of<RPlayer>(context).avemNet
+          ? Column(
+              children: [
+                Container(
+                  height: (screenSize.height -
+                          AppBar().preferredSize.height -
+                          MediaQuery.of(context).viewPadding.top) *
+                      0.87,
+                  child: ListView.builder(
+                      itemCount: listaRadio.length,
+                      itemBuilder: ((context, index) {
+                        return RadioStationBox(
+                          title: listaRadio[index].title,
+                          imageUrl: listaRadio[index].imageUrl,
+                          url: listaRadio[index].url,
+                          id: index,
+                          isPlaying: (listaRadio[index].title ==
+                              radioPlayer.nowPlayingRadioTitle),
+                          isFavorite: listaRadio[index].isFavorite,
+                        );
+                      })),
+                ),
+                InfoBar((screenSize.height -
+                        AppBar().preferredSize.height -
+                        MediaQuery.of(context).viewPadding.top) *
+                    0.13),
+              ],
+            )
+          : NoNetworkConnectionWidget(),
     );
   }
 }
