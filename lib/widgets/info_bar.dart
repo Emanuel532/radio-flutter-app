@@ -13,7 +13,14 @@ class InfoBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //List<RadioStation> listaRadio = Provider.of<RStations>(context).getList;
+
     RPlayer radioPlayer = Provider.of<RPlayer>(context);
+
+    RadioPlayer rp = radioPlayer.getRadioPlayer;
+    rp.stateStream.listen((value) {
+      radioPlayer.changeIsRadioPlayingState(value);
+    });
+
     return Container(
       width: 1 / 0,
       color: Theme.of(context).colorScheme.primary,

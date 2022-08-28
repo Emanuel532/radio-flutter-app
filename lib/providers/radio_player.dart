@@ -1,3 +1,6 @@
+import 'dart:async';
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:radio_player/radio_player.dart';
 import '../providers/radio_stations_data.dart';
@@ -11,6 +14,18 @@ class RPlayer with ChangeNotifier {
   bool isRadioPlaying = false;
   bool isNewStationLoading = false;
   bool avemNet = true;
+
+  Timer radioTimer = Timer(Duration(), () {});
+
+  void stopRadioAfter(Duration duration) {
+    radioTimer = Timer(duration, () {
+      exit(0);
+    });
+  }
+
+  void cancelStopRadioAfter() {
+    radioTimer.cancel();
+  }
 
   void schimbariNet(bool val) {
     avemNet = val;
@@ -57,6 +72,11 @@ class RPlayer with ChangeNotifier {
         schimbariNet(false);
       }
     });
+  }
+
+  void changeIsRadioPlayingState(bool val) {
+    isRadioPlaying = val;
+    notifyListeners();
   }
 
   void stopRadio() {

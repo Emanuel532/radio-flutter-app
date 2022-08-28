@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../widgets/timer_dialog_menu.dart';
+import 'package:radio_app/providers/radio_player.dart';
 import 'package:radio_app/providers/radio_stations_data.dart';
 import '../screens/radio_stations_favorites_screen.dart';
 import '../screens/radio_stations_screen.dart';
@@ -84,7 +86,12 @@ class RadioDrawer extends StatelessWidget {
               thickness: 2,
             ),
             InkWell(
-                onTap: () {},
+                onTap: () {
+                  showDialog(
+                    context: context,
+                    builder: (ctx) => TimerDialogMenu(context),
+                  );
+                },
                 child: ListTile(
                     leading: Icon(Icons.timer),
                     title: Text(
