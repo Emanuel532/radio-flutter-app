@@ -8,6 +8,7 @@ class RPlayer with ChangeNotifier {
   RadioPlayer _radioPlayer = RadioPlayer();
   String nowPlayingRadioTitle = '';
   String nowPlayingRadioImage = '';
+  bool isNewStationLoading = false;
   bool avemNet = true;
 
   void schimbariNet(bool val) {
@@ -45,7 +46,10 @@ class RPlayer with ChangeNotifier {
     _radioPlayer.stop();
     amIConnected().then((value) {
       if (value) {
-        _radioPlayer.play();
+        _radioPlayer.play().then((value) {
+          isNewStationLoading = false;
+          notifyListeners();
+        });
       } else {
         schimbariNet(false);
       }
@@ -61,6 +65,8 @@ class RPlayer with ChangeNotifier {
       required String url,
       required String imageUrl,
       required int stationId}) {
+    _radioPlayer.stop();
+    isNewStationLoading = true;
     _radioPlayer
         .setChannel(title: title, imagePath: imageUrl, url: url)
         .then((value) => _radioPlayer.stop().then((value) => startRadio()));

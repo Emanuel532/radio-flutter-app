@@ -15,48 +15,59 @@ class InfoBar extends StatelessWidget {
     //List<RadioStation> listaRadio = Provider.of<RStations>(context).getList;
     RPlayer radioPlayer = Provider.of<RPlayer>(context);
     return Container(
+      width: 1 / 0,
       color: Theme.of(context).colorScheme.primary,
       height: calculatedHeight,
       child: radioPlayer.nowPlayingRadioImage != ''
-          ? Row(children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Image.network(
-                  radioPlayer.nowPlayingRadioImage,
-                  height: 70,
-                  width: 70,
-                  fit: BoxFit.fill,
-                ),
-              ),
-              SizedBox(
-                width: 10,
-              ),
-              Expanded(
-                  child: Text(
-                radioPlayer.nowPlayingRadioTitle,
-                style: TextStyle(fontSize: 30, color: Colors.white),
-              )),
-              IconButton(
-                onPressed: () {
-                  radioPlayer.startRadio();
-                },
-                icon: Icon(
-                  Icons.play_arrow,
-                  color: Colors.white,
-                ),
-                iconSize: 60,
-              ),
-              IconButton(
-                onPressed: () {
-                  radioPlayer.stopRadio();
-                },
-                icon: Icon(
-                  Icons.pause,
-                  color: Colors.white,
-                ),
-                iconSize: 60,
-              )
-            ])
+          ? radioPlayer.isNewStationLoading
+              ? Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+                  SizedBox(
+                    width: 45,
+                    child: CircularProgressIndicator(
+                      strokeWidth: 4,
+                      color: Colors.white,
+                    ),
+                  ),
+                ])
+              : Row(children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Image.network(
+                      radioPlayer.nowPlayingRadioImage,
+                      height: 70,
+                      width: 70,
+                      fit: BoxFit.fill,
+                    ),
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Expanded(
+                      child: Text(
+                    radioPlayer.nowPlayingRadioTitle,
+                    style: TextStyle(fontSize: 30, color: Colors.white),
+                  )),
+                  IconButton(
+                    onPressed: () {
+                      radioPlayer.startRadio();
+                    },
+                    icon: Icon(
+                      Icons.play_arrow,
+                      color: Colors.white,
+                    ),
+                    iconSize: 60,
+                  ),
+                  IconButton(
+                    onPressed: () {
+                      radioPlayer.stopRadio();
+                    },
+                    icon: Icon(
+                      Icons.pause,
+                      color: Colors.white,
+                    ),
+                    iconSize: 60,
+                  )
+                ])
           : Container(
               width: 1 / 0,
               child: Center(

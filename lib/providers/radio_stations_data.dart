@@ -50,13 +50,12 @@ class RStations with ChangeNotifier {
         title: 'Romania Cultural',
         url: 'http://89.238.227.6:8012/%7CRadio'),
     RadioStation(
-        imageUrl:
-            'https://static.wikia.nocookie.net/logopedia/images/b/b3/Radio_Rom%C3%A2nia_Antena_Satelor.svg/revision/latest?cb=20210727121605',
+        imageUrl: 'https://i.imgur.com/nsymSuc.jpeg',
         title: 'Antena Satelor',
         url: 'http://89.238.227.6:8042/%7CRadio'),
     RadioStation(
         imageUrl:
-            'https://static.wikia.nocookie.net/logopedia/images/b/b3/Radio_Rom%C3%A2nia_Antena_Satelor.svg/revision/latest?cb=20210727121605',
+            'https://pbs.twimg.com/profile_images/1512570444/Sigla_RC_400x400.jpg',
         title: 'Romania Constanta',
         url: 'http://89.238.227.6:8336/%7CRadio'),
   ];
