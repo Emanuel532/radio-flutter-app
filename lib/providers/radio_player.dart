@@ -8,6 +8,7 @@ class RPlayer with ChangeNotifier {
   RadioPlayer _radioPlayer = RadioPlayer();
   String nowPlayingRadioTitle = '';
   String nowPlayingRadioImage = '';
+  bool isRadioPlaying = false;
   bool isNewStationLoading = false;
   bool avemNet = true;
 
@@ -44,6 +45,8 @@ class RPlayer with ChangeNotifier {
 
   void startRadio() {
     _radioPlayer.stop();
+    isRadioPlaying = true;
+    notifyListeners();
     amIConnected().then((value) {
       if (value) {
         _radioPlayer.play().then((value) {
@@ -58,6 +61,8 @@ class RPlayer with ChangeNotifier {
 
   void stopRadio() {
     _radioPlayer.stop();
+    isRadioPlaying = false;
+    notifyListeners();
   }
 
   void changeStation(

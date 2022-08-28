@@ -30,9 +30,13 @@ class RadioStationBox extends StatelessWidget {
     List<RadioStation> lista = radioStationsDataList.getList;
     RPlayer rplayer = Provider.of<RPlayer>(context);
     return Ink(
-      color: isPlaying ? Theme.of(context).primaryColor : Colors.white,
+      color: isPlaying
+          ? (rplayer.isRadioPlaying
+              ? Theme.of(context).primaryColor
+              : Colors.white)
+          : Colors.white,
       child: InkWell(
-        splashColor: Theme.of(context).primaryColor,
+        splashColor: Colors.transparent,
         onDoubleTap: () {
           // const snackBar = SnackBar(
           //     content: Text(

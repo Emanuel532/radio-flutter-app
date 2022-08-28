@@ -47,26 +47,27 @@ class InfoBar extends StatelessWidget {
                     radioPlayer.nowPlayingRadioTitle,
                     style: TextStyle(fontSize: 30, color: Colors.white),
                   )),
-                  IconButton(
-                    onPressed: () {
-                      radioPlayer.startRadio();
-                    },
-                    icon: Icon(
-                      Icons.play_arrow,
-                      color: Colors.white,
-                    ),
-                    iconSize: 60,
-                  ),
-                  IconButton(
-                    onPressed: () {
-                      radioPlayer.stopRadio();
-                    },
-                    icon: Icon(
-                      Icons.pause,
-                      color: Colors.white,
-                    ),
-                    iconSize: 60,
-                  )
+                  radioPlayer.isRadioPlaying
+                      ? IconButton(
+                          onPressed: () {
+                            radioPlayer.stopRadio();
+                          },
+                          icon: Icon(
+                            Icons.pause,
+                            color: Colors.white,
+                          ),
+                          iconSize: 60,
+                        )
+                      : IconButton(
+                          onPressed: () {
+                            radioPlayer.startRadio();
+                          },
+                          icon: Icon(
+                            Icons.play_arrow,
+                            color: Colors.white,
+                          ),
+                          iconSize: 60,
+                        )
                 ])
           : Container(
               width: 1 / 0,
