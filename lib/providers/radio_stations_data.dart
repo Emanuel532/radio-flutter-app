@@ -10,6 +10,8 @@ import 'dart:io';
 class RStations with ChangeNotifier {
   bool favorite = false;
 
+  String valoareCautare = 'di';
+
   int ecranDeschis = 0;
 
   void changeEcranDeschis(int newValue) {
@@ -24,16 +26,21 @@ class RStations with ChangeNotifier {
 
   List<RadioStation> _radio_stations_list = [
     RadioStation(
-        imageUrl:
-            'https://play-lh.googleusercontent.com/N0nBwW9h9u6mP0QITuR_o8SZ8HzyuqPE8VJ1vav8iYtzTCpXFr9YvxVQP4DPKSgD9g=w240-h480-rw',
-        title: 'Rock FM',
-        url: 'https://live.rockfm.ro/rockfm.aacp',
-        isFavorite: true),
+      imageUrl:
+          'https://play-lh.googleusercontent.com/N0nBwW9h9u6mP0QITuR_o8SZ8HzyuqPE8VJ1vav8iYtzTCpXFr9YvxVQP4DPKSgD9g=w240-h480-rw',
+      title: 'Rock FM',
+      url: 'https://live.rockfm.ro/rockfm.aacp',
+    ),
     RadioStation(
         imageUrl:
             'https://static.wikia.nocookie.net/logopedia/images/f/fe/Digi_FM_2015.svg/revision/latest/scale-to-width-down/1000?cb=20210727093136',
         title: 'Digi FM',
         url: 'http://edge76.rdsnet.ro:84/digifm/digifm.mp3'),
+    RadioStation(
+        imageUrl:
+            'https://flyclipart.com/thumbs/logo-europa-fm-2018-europa-fm-romania-logo-1384464.png',
+        title: 'Europa FM',
+        url: 'http://astreaming.europafm.ro:8000/europafm_aacp48k'),
     RadioStation(
         imageUrl:
             'https://guerrillaradio.b-cdn.net/wp-content/themes/guerrilla/library/images/new_logo_header.png',
@@ -58,14 +65,38 @@ class RStations with ChangeNotifier {
             'https://pbs.twimg.com/profile_images/1512570444/Sigla_RC_400x400.jpg',
         title: 'Romania Constanta',
         url: 'http://89.238.227.6:8336/%7CRadio'),
+    RadioStation(
+        imageUrl:
+            'https://www.radioromaniacultural.ro/wp-content/uploads/2017/05/Untitled-1200x480.png',
+        title: 'Romania Timisoara',
+        url: 'http://89.238.227.6:8354/%7CRadio'),
+    RadioStation(
+        imageUrl: 'https://www.rri.ro/img/logo.png',
+        title: 'Romania International 1',
+        url: 'http://89.238.227.6:8052/%7CRadio'),
+    RadioStation(
+        imageUrl:
+            'https://virginradio.ro/wp-content/themes/virgin_v3/img/logo.png',
+        title: 'Virgin Radio',
+        url: 'http://89.238.227.6:8052/%7CRadio'),
+    RadioStation(
+        imageUrl: 'http://img.teniescu.ro/albums/blog/profmlogo.jpg',
+        title: 'ProFM',
+        url: 'http://edge126.rdsnet.ro:84/profm/profm.mp3'),
   ];
 
   get favorit {
     return favorite;
   }
 
+  void setareValoareCautare(String val) {
+    print('ds');
+    valoareCautare = val;
+    notifyListeners();
+  }
+
   get getList {
-    return [..._radio_stations_list];
+    return [...(_radio_stations_list)];
   }
 
   get getFavoriteList {

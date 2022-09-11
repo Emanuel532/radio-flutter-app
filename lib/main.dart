@@ -8,11 +8,16 @@ import './screens/radio_stations_screen.dart';
 import './providers/radio_player.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import './screens/radio_stations_favorites_screen.dart';
+import './providers/ui_data.dart';
+import './screens/search_screen.dart';
 
 void main() {
   runApp(MultiProvider(
     providers: [
       ChangeNotifierProvider(create: (ctx) => RStations()),
+      ChangeNotifierProvider(
+        create: (ctx) => UIData(),
+      ),
       ChangeNotifierProvider(
         create: (ctx) => RPlayer(),
       ),
@@ -87,7 +92,8 @@ class _HomePageState extends State<HomePage> {
         routes: {
           RadioStationsScreen.routeName: (ctx) => RadioStationsScreen(),
           RadioStationsFavoritesScreen.routeName: (ctx) =>
-              RadioStationsFavoritesScreen()
+              RadioStationsFavoritesScreen(),
+          SearchScreen.routeName: (ctx) => SearchScreen(),
         },
         theme: theme.copyWith(
           colorScheme: theme.colorScheme.copyWith(

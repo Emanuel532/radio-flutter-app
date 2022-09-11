@@ -13,6 +13,7 @@ class RadioStationBox extends StatelessWidget {
   final bool isFavorite;
   final bool isPlaying;
   final int id;
+  final bool isSearchScreen;
 
   RadioStationBox({
     required this.title,
@@ -21,6 +22,7 @@ class RadioStationBox extends StatelessWidget {
     required this.isFavorite,
     required this.imageUrl,
     required this.id,
+    this.isSearchScreen = false,
   });
 
   @override
@@ -53,6 +55,10 @@ class RadioStationBox extends StatelessWidget {
 
           rplayer.changeStation(
               title: title, url: url, imageUrl: imageUrl, stationId: id);
+          if (isSearchScreen) {
+            radioStationsDataList.setareValoareCautare('');
+            Navigator.pop(context);
+          }
         }),
         child: Card(
           elevation: 6,

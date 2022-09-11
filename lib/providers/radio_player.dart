@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:radio_player/radio_player.dart';
@@ -18,6 +17,7 @@ class RPlayer with ChangeNotifier {
   Timer radioTimer = Timer(Duration(), () {});
 
   void stopRadioAfter(Duration duration) {
+    radioTimer.cancel();
     radioTimer = Timer(duration, () {
       exit(0);
     });
