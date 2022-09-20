@@ -4,6 +4,7 @@ import 'dart:developer' as developer;
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:radio_app/providers/radio_stations_data.dart';
+import 'package:radio_app/screens/settings_screen.dart';
 import './screens/radio_stations_screen.dart';
 import './providers/radio_player.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
@@ -94,6 +95,7 @@ class _HomePageState extends State<HomePage> {
           RadioStationsFavoritesScreen.routeName: (ctx) =>
               RadioStationsFavoritesScreen(),
           SearchScreen.routeName: (ctx) => SearchScreen(),
+          SettingsScreen.routeName: (ctx) => SettingsScreen(),
         },
         theme: theme.copyWith(
           colorScheme: theme.colorScheme.copyWith(

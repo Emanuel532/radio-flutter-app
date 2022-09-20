@@ -278,10 +278,10 @@ packages:
   radio_player:
     dependency: "direct main"
     description:
-      name: radio_player
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.0.1"
+      path: "C:\\src\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\radio_player-1.1.0"
+      relative: false
+    source: path
+    version: "1.1.0"
   sky_engine:
     dependency: transitive
     description: flutter

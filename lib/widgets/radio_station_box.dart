@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:radio_app/providers/radio_stations_data.dart';
 import '../providers/radio_player.dart';
+import 'heart_widget.dart';
 import 'package:radio_player/radio_player.dart';
 import '../models/radio_station.dart';
 
@@ -78,7 +79,11 @@ class RadioStationBox extends StatelessWidget {
                 title,
               ),
             ]),
-            IconButton(
+            Heart(isFavorite, () {
+              radioStationsDataList.changeFavoriteStatus(title);
+              radioStationsDataList.savesDataLocally();
+            }),
+            /*IconButton(
                 onPressed: () {
                   radioStationsDataList.changeFavoriteStatus(title);
                   radioStationsDataList.savesDataLocally();
@@ -88,7 +93,7 @@ class RadioStationBox extends StatelessWidget {
                         color: Theme.of(context).colorScheme.error)
                     : Icon(
                         Icons.favorite_border,
-                      )),
+                      )), */
           ]),
         ),
       ),

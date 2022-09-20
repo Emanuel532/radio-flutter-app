@@ -10,7 +10,7 @@ import 'dart:io';
 class RStations with ChangeNotifier {
   bool favorite = false;
 
-  String valoareCautare = 'di';
+  String valoareCautare = '';
 
   int ecranDeschis = 0;
 
@@ -40,7 +40,7 @@ class RStations with ChangeNotifier {
         imageUrl:
             'https://flyclipart.com/thumbs/logo-europa-fm-2018-europa-fm-romania-logo-1384464.png',
         title: 'Europa FM',
-        url: 'http://astreaming.europafm.ro:8000/europafm_aacp48k'),
+        url: 'http://astreaming.europafm.ro:8000/europafm_mp3_64k.m3u'),
     RadioStation(
         imageUrl:
             'https://guerrillaradio.b-cdn.net/wp-content/themes/guerrilla/library/images/new_logo_header.png',

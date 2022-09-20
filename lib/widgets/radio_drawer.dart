@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../screens/settings_screen.dart';
 import '../widgets/timer_dialog_menu.dart';
 import 'package:radio_app/providers/radio_player.dart';
 import 'package:radio_app/providers/radio_stations_data.dart';
@@ -102,7 +103,9 @@ class RadioDrawer extends StatelessWidget {
               thickness: 2,
             ),
             InkWell(
-                onTap: () {},
+                onTap: () {
+                  Navigator.of(context).pushNamed(SettingsScreen.routeName);
+                },
                 child: ListTile(
                     leading: Icon(Icons.settings),
                     title: Text(

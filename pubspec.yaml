@@ -31,7 +31,11 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: ^1.0.2
-  radio_player: ^1.0.1
+  radio_player: 
+    path: 'C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/radio_player-1.1.0'
+  #radio_player:
+  #  git:
+  #    url: git://github.com/Emanuel532/radio_player.git
   provider: ^6.0.0
   path_provider: ^2.0.11
   connectivity_plus: ^2.3.6+1
