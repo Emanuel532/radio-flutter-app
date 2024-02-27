@@ -1,16 +1,12 @@
 # radio_app
 
-A new Flutter project.
+This application provides the user with the opportunity to listen to various local radio stations. I developed the application
+using the Flutter framework, and it is available on both Android and iOS platforms
 
-## Getting Started
+## Screenshots
+Main Favorite Page(displaying a list of your favorite radio stations)
+![Screenshot_20240227_085138](https://github.com/Emanuel532/radio-flutter-app/assets/40988387/02825c5b-7bda-4f9e-ac70-5b24e1c3aa1c)
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+![Screenshot_20240227_085148](https://github.com/Emanuel532/radio-flutter-app/assets/40988387/33549f6d-a3cd-40e6-b030-f6a6c255d765)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
